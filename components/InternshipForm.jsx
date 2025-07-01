@@ -1,16 +1,28 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const InternshipForm = () => {
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // You can add your form validation here if needed
+
     alert("Internship application submitted!");
-    // Here you could add API call to submit form data
+    
+    // Redirect to home page after submission
+    navigate("/");
   };
 
   return (
     <div style={styles.container}>
       <h1 style={styles.heading}>Internship Application</h1>
-      <form style={styles.form} encType="multipart/form-data" onSubmit={handleSubmit}>
+      <form
+        style={styles.form}
+        encType="multipart/form-data"
+        onSubmit={handleSubmit}
+      >
         {/* Personal Details */}
         <label>Full Name:</label>
         <input type="text" name="fullname" required style={styles.input} />
@@ -53,26 +65,56 @@ const InternshipForm = () => {
         <input type="date" name="startDate" required style={styles.input} />
 
         <label>Duration of Internship (months):</label>
-        <input type="number" name="duration" min="1" max="12" required style={styles.input} />
+        <input
+          type="number"
+          name="duration"
+          min="1"
+          max="12"
+          required
+          style={styles.input}
+        />
 
         {/* Experience */}
         <label>Previous Internship or Work Experience:</label>
-        <textarea name="experience" rows="3" placeholder="Describe any previous internship or work experience" style={styles.input}></textarea>
+        <textarea
+          name="experience"
+          rows="3"
+          placeholder="Describe any previous internship or work experience"
+          style={styles.input}
+        ></textarea>
 
         {/* File Uploads */}
         <label>Upload Your CV:</label>
-        <input type="file" name="cv" accept=".pdf,.doc,.docx" required style={styles.input} />
+        <input
+          type="file"
+          name="cv"
+          accept=".pdf,.doc,.docx"
+          required
+          style={styles.input}
+        />
 
         <label>Upload ID Document:</label>
-        <input type="file" name="id" accept=".pdf,.jpg,.jpeg,.png" required style={styles.input} />
+        <input
+          type="file"
+          name="id"
+          accept=".pdf,.jpg,.jpeg,.png"
+          required
+          style={styles.input}
+        />
 
         {/* Motivation */}
         <label>Why are you interested in this internship?</label>
-        <textarea name="motivation" rows="4" required style={styles.input}></textarea>
+        <textarea
+          name="motivation"
+          rows="4"
+          required
+          style={styles.input}
+        ></textarea>
 
         {/* Declaration */}
         <label style={{ marginTop: "15px", display: "block" }}>
-          <input type="checkbox" name="declaration" required /> I declare that the information provided is true and complete.
+          <input type="checkbox" name="declaration" required /> I declare that
+          the information provided is true and complete.
         </label>
 
         <input
